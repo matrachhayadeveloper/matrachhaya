@@ -70,7 +70,6 @@
       border-radius:18px;
       overflow:hidden;
       position:relative;
-      max-width: 100%; /* Ensure width consistency */
     }
 
     .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
@@ -93,8 +92,6 @@
       display:grid;
       grid-template-columns:1fr 420px;
       gap:26px;
-      max-width: 1180px; /* Match Rooms & Pricing width */
-      margin: auto;
     }
     .hero-card{padding:32px;display:flex;flex-direction:column;gap:12px}
     .eyebrow{color:var(--accent-2);font-weight:800;font-size:13px}
@@ -132,7 +129,7 @@
     }
 
     /* Aside */
-    aside{padding:22px;display:flex;flex-direction:column;justify-content:space-between; max-width: 420px;} /* Match Facilities width */
+    aside{padding:22px;display:flex;flex-direction:column;justify-content:space-between}
 
     /* Rooms */
     .rooms-grid{display:flex;gap:12px;margin-top:12px}
@@ -158,6 +155,7 @@
       border:1px solid rgba(255,255,255,0.06);
     }
     .facility .label {
+      /* Added this rule just in case */
       color: var(--white);
     }
 
@@ -187,64 +185,116 @@
 
     /* --- TABLET (MEDIUM SCREENS) --- */
     @media(max-width:980px){
+      /* Stacks Hero and Rooms/Facilities sections */
       .hero, #rooms { 
         grid-template-columns: 1fr;
-        gap: 26px;
+        gap: 26px; /* Added gap for consistent stacking */
       }
     }
 
-    /* --- MOBILE OPTIMIZATIONS (SMALL SCREENS) --- */
-    @media(max-width: 600px) {
-      .hero, #rooms, #services, #contact {
-        grid-template-columns: 1fr !important;
-        padding: 16px;
-      }
+/* --- MOBILE OPTIMIZATIONS (SMALL SCREENS) --- */
+@media(max-width: 600px) {
 
-      .nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-      }
+  /* Ensure full width for all sections */
+  .hero,
+  #rooms,
+  #services,
+  #contact {
+    grid-template-columns: 1fr !important;
+    padding: 16px;
+  }
 
-      .nav > div:nth-child(1) {
-        text-align: center;
-      }
+  /* Stacks navigation vertically and centers logo */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  /* Center the logo text */
+  .nav > div:nth-child(1) {
+    text-align: center;
+  }
 
-      .nav > div:nth-child(2) {
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-      }
+  /* Stack nav links and CTA button */
+  .nav > div:nth-child(2) {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
 
-      .nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
 
-      h1 { font-size: 28px !important; }
-      h2 { font-size: 30px !important; }
+  /* Adjust heading font sizes for smaller screens */
+  h1 {
+    font-size: 28px !important;
+  }
 
-      .hero-card > div[style*="flex-wrap:wrap"] {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
+  h2 {
+    font-size: 30px !important;
+  }
 
-      .hero-card > div[style*="flex-wrap:wrap"] > .btn-small {
-        justify-content: center;
-      }
+  /* Stack buttons in the hero section */
+  .hero-card > div[style*="flex-wrap:wrap"] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
 
-      .features { flex-direction: column; gap: 10px; }
-      .feature { flex-basis: auto; }
-      .rooms-grid { flex-direction: column; gap: 10px; }
-      .room-card { flex-basis: auto; }
-      .facilities { grid-template-columns: 1fr; gap: 10px; }
-      #contact > div { justify-content: center; }
-      .wa, .call-btn { padding: 8px 12px; font-size: 14px; }
-      .hero-card, .glass { padding: 16px; }
-    }
+  .hero-card > div[style*="flex-wrap:wrap"] > .btn-small {
+    justify-content: center;
+  }
+
+  /* Stack features vertically */
+  .features {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .feature {
+    flex-basis: auto;
+  }
+
+  /* Stack room cards vertically */
+  .rooms-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .room-card {
+    flex-basis: auto;
+  }
+
+  /* Stack facilities into 1 column */
+  .facilities {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Center contact buttons */
+  #contact > div {
+    justify-content: center;
+  }
+
+  /* Adjust spacing for smaller contact buttons */
+  .wa,
+  .call-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  /* Reduce padding for cards in sections */
+  .hero-card,
+  .glass {
+    padding: 16px;
+  }
+}
+
   </style>
 </head>
 
@@ -281,19 +331,19 @@
       </p>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
-        <button class="btn-small btn-primary">
-          <i data-lucide="calendar-check" class="icon"></i>
-          Book a Room
-        </button>
+      <a href="#contact" class="btn-small btn-primary">
+        <i data-lucide="calendar-check" class="icon"></i>
+        Book a Room
+      </a>
 
-        <button class="btn-small btn-ghost">
-          <i data-lucide="menu" class="icon"></i>
-          View Menu
-        </button>
-      </div>
+      <button class="btn-small btn-ghost">
+        <i data-lucide="menu" class="icon"></i>
+        View Menu
+      </button>
+    </div>
 
       <div class="features">
-        <div class="feature"><h4>Fresh Meals</h4><p>Home-style breakfast & dinner.</p></div>
+        <div class="feature"><h4>Fresh Meals</h4><p>Home-style breakfast, lunch & dinner.</p></div>
         <div class="feature"><h4>Clean Rooms</h4><p>Daily housekeeping.</p></div>
         <div class="feature"><h4>Secure Parking</h4><p>Safe & accessible.</p></div>
       </div>
@@ -310,14 +360,14 @@
 
         <div class="contact-list" style="display:flex;flex-direction:column;margin-top:10px;gap:10px">
 
-          <a class="wa" href="https://wa.me/919936751093" target="_blank">
-            <i data-lucide="phone" class="icon"></i>
-            +91 99367 51093
-          </a>
-
-          <a class="call-btn" href="tel:+919936051093">
+          <a class="wa" href="https://wa.me/+919936051093" target="_blank">
             <i data-lucide="phone" class="icon"></i>
             +91 99360 51093
+          </a>
+
+          <a class="call-btn" href="tel:+919936751093">
+            <i data-lucide="phone" class="icon"></i>
+            +91 99367 51093
           </a>
 
         </div>
@@ -339,7 +389,7 @@
     </aside>
   </section>
 
-  <section id="rooms" style="margin-top:30px;display:grid;grid-template-columns:1fr 420px;gap:26px; max-width: 1180px; margin:3;">
+  <section id="rooms" style="margin-top:30px;display:grid;grid-template-columns:1fr 380px;gap:26px">
     
     <div class="glass" style="padding:22px">
       <h3>Our Rooms & Pricing</h3>
@@ -390,22 +440,23 @@
   <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
 
     <a class="wa" 
-       href="https://wa.me/919936751093" 
+       href="https://wa.me/+919936051093" 
        target="_blank"
-       style="padding:8px 12px;font-size:14px">
-      <i data-lucide="phone" class="icon" style="width:16px; height:16px;"></i>
-      99367 51093
-    </a>
-
-    <a class="call-btn" 
-       href="tel:+919936051093"
        style="padding:8px 12px;font-size:14px">
       <i data-lucide="phone" class="icon" style="width:16px; height:16px;"></i>
       99360 51093
     </a>
 
+    <a class="call-btn" 
+       href="tel:+919936751093"
+       style="padding:8px 12px;font-size:14px">
+      <i data-lucide="phone" class="icon" style="width:16px; height:16px;"></i>
+      99367 51093
+    </a>
+
   </div>
 </section>
+
 
   <footer>
     © <span id="year"></span> Matra Chhaya • All rights reserved
