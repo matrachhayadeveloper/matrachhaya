@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matra Chhaya – Premium Lodging & Fooding</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root{
+      --bg:#0c1220;
+      --white:#ffffff;
+      --muted:#9db4c9;
+      --accent:#ff6b6b;
+      --accent-dark:#ff5252;
+      --accent-2:#ffd166;
+
+      --glass-bg:rgba(255,255,255,0.08);
+      --glass-border:rgba(255,255,255,0.18);
+
+      --whatsapp-green:#25D366;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:Inter, sans-serif;
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.06), transparent),
+        radial-gradient(1200px 900px at 80% 20%, rgba(255,255,255,0.05), transparent),
+        linear-gradient(135deg,#071025,#0b152a 40%,#0a1b34 100%);
+      background-attachment:fixed;
+      color:#e6eef6;
+      overflow-x:hidden;
+      padding-bottom:40px;
+    }
+
+    /* Glossy Animated Overlay */
+    body::before{
+      content:"";
+      position:fixed;
+      top:0;
+      left:-50%;
+      width:200%;
+      height:200%;
+      background:linear-gradient(120deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.15) 45%,
+        rgba(255,255,255,0.05)
+      );
+      opacity:0.25;
+      filter:blur(56px);
+      animation:gloss 22s ease-in-out infinite alternate;
+      z-index:-1;
+    }
+    @keyframes gloss{
+      0%{transform:translate(-12%, -12%) scale(1)}
+      50%{transform:translate(10%, 4%) scale(1.07)}
+      100%{transform:translate(-6%, -4%) scale(1.03)}
+    }
+
+    .wrap{max-width:1180px;margin:auto;padding:26px}
+
+    .glass{
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(14px) saturate(160%);
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      max-width: 100%; /* Ensure width consistency */
+    }
+
+    .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+    .nav-link{color:var(--muted);text-decoration:none;font-weight:600}
+    .nav-link:hover{color:var(--white)}
+
+    .cta{
+      background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+      padding:10px 20px;
+      border-radius:12px;
+      color:var(--white);
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .icon{width:20px;height:20px;color:white}
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:26px;
+      max-width: 1180px; /* Match Rooms & Pricing width */
+      margin: auto;
+    }
+    .hero-card{padding:32px;display:flex;flex-direction:column;gap:12px}
+    .eyebrow{color:var(--accent-2);font-weight:800;font-size:13px}
+
+    /* Buttons */
+    .btn-small{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      border:none;
+      font-size:14px;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+      color:white;
+    }
+    .btn-ghost{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--muted);
+    }
+
+    /* Features */
+    .features{display:flex;gap:12px;margin-top:10px}
+    .feature{
+      flex:1;
+      padding:14px;
+      background:rgba(255,255,255,0.03);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Aside */
+    aside{padding:22px;display:flex;flex-direction:column;justify-content:space-between; max-width: 420px;} /* Match Facilities width */
+
+    /* Rooms */
+    .rooms-grid{display:flex;gap:12px;margin-top:12px}
+    .room-card{
+      flex:1;
+      padding:14px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:12px;
+      backdrop-filter:blur(8px);
+    }
+
+    /* Facilities */
+    .facilities{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;margin-top:12px;
+    }
+    .facility{
+      display:flex;align-items:center;gap:10px;
+      padding:10px;border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .facility .label {
+      color: var(--white);
+    }
+
+    /* Contact buttons */
+    .contact-actions{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+    .wa{
+      background:var(--whatsapp-green);
+      color:#062013;
+      font-weight:700;
+      padding:10px 14px;
+      border-radius:10px;
+      display:flex;align-items:center;gap:10px;
+      text-decoration:none;
+    }
+    .call-btn{
+      border:1px solid rgba(255,255,255,0.15);
+      background:transparent;
+      color:white;
+      font-weight:700;
+      padding:10px 14px;
+      border-radius:10px;
+      display:flex;align-items:center;gap:10px;
+      text-decoration:none;
+    }
+
+    footer{text-align:center;margin-top:32px;color:var(--muted)}
+
+    /* --- TABLET (MEDIUM SCREENS) --- */
+    @media(max-width:980px){
+      .hero, #rooms { 
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+    }
+
+    /* --- MOBILE OPTIMIZATIONS (SMALL SCREENS) --- */
+    @media(max-width: 600px) {
+      .hero, #rooms, #services, #contact {
+        grid-template-columns: 1fr !important;
+        padding: 16px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .nav > div:nth-child(1) {
+        text-align: center;
+      }
+
+      .nav > div:nth-child(2) {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      h1 { font-size: 28px !important; }
+      h2 { font-size: 30px !important; }
+
+      .hero-card > div[style*="flex-wrap:wrap"] {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .hero-card > div[style*="flex-wrap:wrap"] > .btn-small {
+        justify-content: center;
+      }
+
+      .features { flex-direction: column; gap: 10px; }
+      .feature { flex-basis: auto; }
+      .rooms-grid { flex-direction: column; gap: 10px; }
+      .room-card { flex-basis: auto; }
+      .facilities { grid-template-columns: 1fr; gap: 10px; }
+      #contact > div { justify-content: center; }
+      .wa, .call-btn { padding: 8px 12px; font-size: 14px; }
+      .hero-card, .glass { padding: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <nav class="nav">
+    <div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:32px;color:white;margin:0">Matra Chhaya</h1>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px">Lodging & Fooding</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:26px">
+      <div class="nav-links" style="display:flex;gap:20px">
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#rooms">Rooms</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+      <a class="cta" href="#contact">Book Now</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="glass hero-card">
+      <div class="eyebrow">Premium Hospitality</div>
+
+      <h2 style="font-family:'Playfair Display',serif;font-size:40px">
+        Comfort, Cleanliness & Care<br>
+        <span style="color:var(--accent-2)">Matra Chhaya</span>
+      </h2>
+
+      <p style="color:var(--muted)">
+        Experience comfortable stays with home-style food. Safe parking, RO water, Wi-Fi & luxury rooms.
+      </p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
+        <button class="btn-small btn-primary">
+          <i data-lucide="calendar-check" class="icon"></i>
+          Book a Room
+        </button>
+
+        <button class="btn-small btn-ghost">
+          <i data-lucide="menu" class="icon"></i>
+          View Menu
+        </button>
+      </div>
+
+      <div class="features">
+        <div class="feature"><h4>Fresh Meals</h4><p>Home-style breakfast & dinner.</p></div>
+        <div class="feature"><h4>Clean Rooms</h4><p>Daily housekeeping.</p></div>
+        <div class="feature"><h4>Secure Parking</h4><p>Safe & accessible.</p></div>
+      </div>
+    </div>
+
+    <aside class="glass">
+      <div>
+        <div style="font-size:13px;color:var(--muted)">Owner</div>
+        <div style="font-weight:700;font-size:17px;color:white">Santosh Kumar Shukla</div>
+
+        <hr style="border:none;border-top:1px dashed rgba(255,255,255,0.15);margin:14px 0">
+
+        <div style="font-size:13px;color:var(--muted)">Contact</div>
+
+        <div class="contact-list" style="display:flex;flex-direction:column;margin-top:10px;gap:10px">
+
+          <a class="wa" href="https://wa.me/919936751093" target="_blank">
+            <i data-lucide="phone" class="icon"></i>
+            +91 99367 51093
+          </a>
+
+          <a class="call-btn" href="tel:+919936051093">
+            <i data-lucide="phone" class="icon"></i>
+            +91 99360 51093
+          </a>
+
+        </div>
+
+        <hr style="border:none;border-top:1px dashed rgba(255,255,255,0.15);margin:14px 0">
+
+        <div style="font-size:13px;color:var(--muted)">Head Office</div>
+        <div style="color:white;font-weight:700;margin-top:6px">
+          Near Devki Hospital, Shankarjipuram,<br> Sitapur Road, Lucknow
+        </div>
+
+        <div style="margin-top:16px">
+          <div style="font-size:13px;color:var(--muted)">Branch</div>
+          <div style="color:white;font-weight:700;margin-top:6px">
+            Brajdham Colony, Behind Seva Hospital, Lucknow
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="rooms" style="margin-top:30px;display:grid;grid-template-columns:1fr 420px;gap:26px; max-width: 1180px; margin:3;">
+    
+    <div class="glass" style="padding:22px">
+      <h3>Our Rooms & Pricing</h3>
+      <p style="color:var(--muted)">Comfort-focused rooms designed for peace.</p>
+
+      <div class="rooms-grid">
+        <div class="room-card"><h5>Standard Stay</h5><p>Essentials for good rest.</p></div>
+        <div class="room-card"><h5>Deluxe Comfort</h5><p>Spacious & premium.</p></div>
+        <div class="room-card"><h5>Luxury Suite</h5><p>Top-tier comfort.</p></div>
+      </div>
+    </div>
+
+    <div id="services" class="glass" style="padding:22px">
+      <h3>Facilities</h3>
+      <p style="color:var(--muted)">Everything for a relaxing stay.</p>
+
+      <div class="facilities">
+
+        <div class="facility">
+          <i data-lucide="droplet" class="icon"></i>
+          <div class="label">RO Water</div>
+        </div>
+
+        <div class="facility">
+          <i data-lucide="car" class="icon"></i>
+          <div class="label">Secure Parking</div>
+        </div>
+
+        <div class="facility">
+          <i data-lucide="wifi" class="icon"></i>
+          <div class="label">Free Wi-Fi</div>
+        </div>
+
+        <div class="facility">
+          <i data-lucide="sparkles" class="icon"></i>
+          <div class="label">Daily Housekeeping</div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section id="contact" class="glass" style="padding:18px;margin-top:28px">
+  <h3 style="margin-bottom:6px">Contact & Booking</h3>
+  <p style="color:var(--muted);margin-bottom:12px">Call or WhatsApp to book your room.</p>
+
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+
+    <a class="wa" 
+       href="https://wa.me/919936751093" 
+       target="_blank"
+       style="padding:8px 12px;font-size:14px">
+      <i data-lucide="phone" class="icon" style="width:16px; height:16px;"></i>
+      99367 51093
+    </a>
+
+    <a class="call-btn" 
+       href="tel:+919936051093"
+       style="padding:8px 12px;font-size:14px">
+      <i data-lucide="phone" class="icon" style="width:16px; height:16px;"></i>
+      99360 51093
+    </a>
+
+  </div>
+</section>
+
+  <footer>
+    © <span id="year"></span> Matra Chhaya • All rights reserved
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  lucide.createIcons();
+</script>
+
+</body>
+</html>
